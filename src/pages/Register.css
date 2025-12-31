@@ -1,0 +1,183 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  background-color: #0f172a;
+}
+
+/* =========================
+   REGISTER PAGE
+========================= */
+.register-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #020617;
+  padding: 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #e5e7eb;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.register-card h1 {
+  text-align: center;
+  font-size: 26px;
+  color: #38bdf8;
+}
+
+.register-card p {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.register-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-card input {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.register-card input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.register-card button {
+  background-color: #38bdf8;
+  color: #020617;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.register-card button:hover {
+  background-color: #0ea5e9;
+}
+
+.register-card span {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.register-card a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.register-card a:hover {
+  text-decoration: underline;
+}
+
+/* Envolve o select com título */
+.status-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-wrapper label {
+  font-size: 13px;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* Novo design do select */
+.status-wrapper select {
+  background-color: #0b1120;
+  border: 1px solid #1e293b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.5 7L10 12L14.5 7H5.5Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* Hover */
+.status-wrapper select:hover {
+  border-color: #38bdf8;
+}
+
+/* Focus */
+.status-wrapper select:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+/* Mensagem de erro abaixo do input */
+.error-msg {
+  color: #f87171;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 500px) {
+  .register-card {
+    width: 100%;
+    padding: 25px;
+    gap: 16px;
+  }
+
+  .register-card h1 {
+    font-size: 22px;
+  }
+
+  .register-card p {
+    font-size: 13px;
+  }
+
+  .register-card input,
+  .register-card select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .register-page {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,215 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+/* =========================
+   HOME
+========================= */
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+.rom-header {
+  height: 70px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid #1e293b;
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1002;
+}
+
+.rom-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.rom-nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+}
+
+.rom-nav a {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 15px;
+}
+
+.rom-btn {
+  background-color: #38bdf8;
+  color: #020617 !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.rom-btn:hover {
+  background-color: #0ea5e9;
+}
+
+/* BOTÃO MOBILE */
+.rom-menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: #e2e8f0;
+  cursor: pointer;
+  z-index: 1003;
+  position: relative;
+}
+
+/* =========================
+   HERO
+========================= */
+.home-hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 46px;
+  line-height: 1.2;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.5;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.primary-btn {
+  background-color: #38bdf8;
+  color: #020617;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.secondary-btn {
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.disclaimer {
+  margin-top: 35px;
+  font-size: 14px;
+  color: #94a3b8;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 780px) {
+
+  .rom-header {
+    padding: 0 20px;
+  }
+
+  .rom-menu-toggle {
+    display: block;
+  }
+
+  /* NAV DROPDOWN VERTICAL */
+  .rom-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+    background-color: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(8px);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 0;
+
+    transform: translateY(-200%);
+    transition: transform 0.3s ease;
+  }
+
+  .rom-nav.open {
+    transform: translateY(0);
+  }
+
+
+  /* HERO */
+  .home-hero {
+    padding: 40px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primary-btn, .secondary-btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+}
