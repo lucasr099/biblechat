@@ -1,56 +1,54 @@
-📖 HelpHoly.IA – API de Aconselhamento Cristão com IA
+# 📖 HelpHoly.IA – API de Aconselhamento Cristão com IA
 
+GitHub
 
-HelpHoly.IA é uma API de chat cristã desenvolvida com FastAPI, integrada a IA generativa (Groq / LLaMA), cujo objetivo é oferecer acolhimento espiritual, direção prática e cuidado emocional, sempre com base cristã equilibrada, respeitando o contexto espiritual individual de cada usuário.
+HelpHoly.IA é uma API de chat cristã desenvolvida com **FastAPI**, integrada a **IA generativa (Groq / LLaMA)**, cujo objetivo é oferecer **acolhimento espiritual, direção prática e cuidado emocional**, sempre com base cristã equilibrada, respeitando o contexto espiritual individual de cada usuário.
 
-O sistema adapta a resposta da IA conforme o spiritual_status do usuário, garantindo abordagens distintas para pessoas convertidas, não convertidas ou afastadas da fé.
+O sistema **adapta a resposta da IA conforme o `spiritual_status` do usuário**, garantindo abordagens distintas para pessoas convertidas, não convertidas ou afastadas da fé.
 
-✨ Funcionalidades Principais
+---
 
-Autenticação de usuários (JWT)
+## ✨ Funcionalidades Principais
 
-Chat com IA cristã contextualizada
+* Autenticação de usuários (JWT)
+* Chat com IA cristã contextualizada
+* Detecção de crise (suicídio e violência)
+* Respostas de segurança prioritárias
+* Personalização do tom espiritual da IA
+* Integração com Groq API (LLaMA)
+* CORS configurado para produção
+* Logs claros para auditoria e debug
 
-Detecção de crise (suicídio e violência)
+---
 
-Respostas de segurança prioritárias
+## 🧠 Contexto Espiritual Dinâmico
 
-Personalização do tom espiritual da IA
+Cada usuário possui um campo `spiritual_status` no banco de dados:
 
-Integração com Groq API (LLaMA)
-
-CORS configurado para produção
-
-Logs claros para auditoria e debug
-
-🧠 Contexto Espiritual Dinâmico
-
-Cada usuário possui um campo spiritual_status no banco de dados:
-
-CONVERTIDO
-
-NAO_CONVERTIDO
-
-AFASTADO
+* `CONVERTIDO`
+* `NAO_CONVERTIDO`
+* `AFASTADO`
 
 Esse valor é:
 
-Recuperado via autenticação
-
-Processado no backend
-
-Injetado no System Prompt
-
-Enviado ao modelo de IA antes da geração da resposta
+1. Recuperado via autenticação
+2. Processado no backend
+3. Injetado no **System Prompt**
+4. Enviado ao modelo de IA **antes da geração da resposta**
 
 Exemplo de log no servidor:
 
+```text
 DEBUG | spiritual_status recebido: NAO_CONVERTIDO
+```
 
+Isso garante que a IA **sempre responde de acordo com o perfil espiritual do usuário**.
 
-Isso garante que a IA sempre responde de acordo com o perfil espiritual do usuário.
+---
 
-🏗️ Arquitetura do Projeto
+## 🏗️ Arquitetura do Projeto
+
+```
 app/
 ├── auth.py              # Autenticação e JWT
 ├── chat.py              # Rota /chat
@@ -61,8 +59,13 @@ app/
 ├── prompt_builder.py    # Prompt espiritual dinâmico
 ├── groq_service.py      # Integração com Groq API
 main.py                  # Inicialização da aplicação
+```
 
-🔐 Modelo de Usuário
+---
+
+## 🔐 Modelo de Usuário
+
+```python
 class User(Base):
     __tablename__ = "users"
 
@@ -71,125 +74,134 @@ class User(Base):
     password = Column(String)
     name = Column(String)
     spiritual_status = Column(String)
+```
 
-💬 Endpoint de Chat
-POST /chat
+---
 
-Headers
+## 💬 Endpoint de Chat
 
+### `POST /chat`
+
+**Headers**
+
+```
 Authorization: Bearer <JWT_TOKEN>
 Content-Type: application/json
+```
 
+**Body**
 
-Body
-
+```json
 {
   "message": "Quem foi Jesus?"
 }
+```
 
+**Resposta**
 
-Resposta
-
+```json
 {
   "reply": "Resposta gerada pela IA conforme o contexto espiritual"
 }
+```
 
-🛡️ Segurança e Proteção à Vida
+---
+
+## 🛡️ Segurança e Proteção à Vida
 
 O sistema possui um detector automático de crises:
 
-Pensamentos suicidas
-
-Violência
-
-Risco à vida
+* Pensamentos suicidas
+* Violência
+* Risco à vida
 
 Quando detectado:
 
-A IA interrompe a conversa normal
+* A IA **interrompe a conversa normal**
+* Retorna uma mensagem segura
+* Incentiva ajuda humana imediata
+* Não continua o diálogo comum
 
-Retorna uma mensagem segura
+---
 
-Incentiva ajuda humana imediata
-
-Não continua o diálogo comum
-
-🤖 Prompt Base da IA
+## 🤖 Prompt Base da IA
 
 A IA segue princípios rígidos:
 
-Deus, Jesus e Espírito Santo como centro
+* Deus, Jesus e Espírito Santo como centro
+* Tom adulto, calmo e acolhedor
+* Sem fanatismo
+* Sem julgamento
+* Nunca substitui pastor ou psicólogo
+* Proteção da vida acima de tudo
 
-Tom adulto, calmo e acolhedor
+O prompt espiritual específico do usuário é **acoplado dinamicamente** ao prompt base.
 
-Sem fanatismo
+---
 
-Sem julgamento
-
-Nunca substitui pastor ou psicólogo
-
-Proteção da vida acima de tudo
-
-O prompt espiritual específico do usuário é acoplado dinamicamente ao prompt base.
-
-🌐 CORS e Produção
+## 🌐 CORS e Produção
 
 CORS configurado para:
 
+```python
 allow_origins = [
   "https://helpholyia.squareweb.app",
   "https://iacristao.squareweb.app",
   "http://localhost:5173"
 ]
-
+```
 
 Compatível com frontend SPA em produção.
 
-🚀 Como Executar Localmente
+---
+
+## 🚀 Como Executar Localmente
+
+```bash
 git clone https://github.com/seu-usuario/helpholy-ia
 cd helpholy-ia
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
+Crie um `.env` com:
 
-Crie um .env com:
-
+```env
 GROQ_API_KEY=seu_token_aqui
+```
 
-📌 Status do Projeto
+---
 
-✅ Backend funcional
+## 📌 Status do Projeto
 
-✅ IA contextualizada
+* ✅ Backend funcional
+* ✅ IA contextualizada
+* ✅ Produção ativa
+* 🔄 Evolução contínua
 
-✅ Produção ativa
+---
 
-🔄 Evolução contínua
+## ⚠️ Aviso Importante
 
-⚠️ Aviso Importante
+Este projeto **não substitui**:
 
-Este projeto não substitui:
+* Psicólogos
+* Psiquiatras
+* Pastores
+* Aconselhamento profissional
 
-Psicólogos
+Ele atua como **apoio espiritual inicial**, com responsabilidade e limites claros.
 
-Psiquiatras
+---
 
-Pastores
-
-Aconselhamento profissional
-
-Ele atua como apoio espiritual inicial, com responsabilidade e limites claros.
-
-🙏 Visão
+## 🙏 Visão
 
 Ajudar pessoas a:
 
-Organizar emoções
+* Organizar emoções
+* Encontrar direção
+* Se aproximar de Deus
+* Proteger a própria vida
+* Buscar apoio humano e espiritual saudável
 
-Encontrar direção
 
-Se aproximar de Deus
-
-Proteger a própria vida
-
-Buscar apoio humano e espiritual saudável
